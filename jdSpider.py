@@ -24,4 +24,11 @@ def spider(driver,link,needlist):
     else:
         for i in needlist:
             temp.append(getData(driver,i))
+    
+    #如果想要，请调用getPrice
+    try:
+        temp.append(getPrice(driver))
+    except:
+        temp.append('fail')
+        
     return temp
