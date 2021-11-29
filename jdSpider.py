@@ -1,3 +1,4 @@
+from selenium.common.exceptions import NoSuchElementException
 def getData(driver,keyword):
     try:
         return(driver.find_element_by_xpath("//li[contains(text(),'"+keyword+"')]").text)
@@ -7,12 +8,12 @@ def getData(driver,keyword):
 def getPrice(driver):
     try:
         temp=driver.find_element_by_xpath('/html/body/div[6]/div/div[2]/div[4]/div/div[1]/div[2]/span[1]/span[2]').text
-        prices.append(temp)
+        return temp
     except NoSuchElementException:
         temp=driver.find_element_by_xpath('/html/body/div[6]/div/div[2]/div[3]/div/div[1]/div[2]/span[1]/span[2]').text
         return temp
     except:
-        return temp
+        return ('fail')
 
 def spider(driver,link,needlist):
     driver.get(link)
@@ -25,10 +26,8 @@ def spider(driver,link,needlist):
         for i in needlist:
             temp.append(getData(driver,i))
     
-    #如果想要，请调用getPrice
-    try:
-        temp.append(getPrice(driver))
-    except:
-        temp.append('fail')
-        
+    #如果想要价格信息开启
+    temp.append(getPrice(driver))
+
+    temp.append(link)
     return temp
