@@ -1,4 +1,4 @@
-# -Spider
+# jdSpider说明
 基于Selenium构建的针对京东商品详情页的爬虫
 
 ## 可以实现的功能
