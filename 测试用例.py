@@ -12,6 +12,6 @@ driver.maximize_window()
 
 url='https://item.jd.com/11062841516.html'
 needlist=['商品名称','商品编号','商品产地','制作口味','适用场景']
-result=tx.spider(driver,url,needlist)
+result=jdSpider.spider(driver,url,needlist)
 
 print(result)
